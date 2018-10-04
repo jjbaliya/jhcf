@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.1.7//EN"
+    "http://struts.apache.org/dtds/struts-2.1.7.dtd">
+<struts>
+	<package name="manage" namespace="/manage" extends="struts-default">
+	
+		
+		
+		
+		
+		<action name="album" class="albumShowAction">
+			<result name="success">/WEB-INF/admin/album_manage.jsp</result>
+			
+		</action>
+		
+		
+		<action name="album_delete" class="albumDeleteAction">
+		<result name="success">/WEB-INF/admin/album_manage.jsp</result>
+		</action>
+		
+		<action name="to_album_add" class="albumShowAction">
+			<result name="success">/WEB-INF/admin/album_add.jsp</result>
+		</action>
+		
+		<action name="album_add" class="imageUpload">
+		<interceptor-ref name="fileUpload"/>
+		<interceptor-ref name="basicStack"/>
+			<result name="success" type="chain">add4</result>
+		</action>
+		<action name="add4" class="albumAddAction">
+			<result name="success" type="chain">album</result>
+		</action>
+		
+		
+		<!-- ******************************照片*********************************** -->
+		
+	<action name="album_detail" class="albumDetailAction">
+			<result name="success">/WEB-INF/admin/album_detail.jsp</result>
+				
+		</action>
+	<action name="album_photo_delete" class="photoDeleteAction">
+			<result name="success" type="chain">album</result>
+		</action>
+	
+	<action name="to_album_photo_add" class="albumShowAction">
+			<result name="success">/WEB-INF/admin/album_photo_add.jsp</result>
+		</action>
+	
+	<action name="album_photo_add" class="imageUpload">
+		<interceptor-ref name="fileUpload"/>
+		<interceptor-ref name="basicStack"/>
+			<result name="success" type="chain">add7</result>
+		</action>
+		<action name="add7" class="photoAddAction">
+			<result name="success" type="chain">album_detail</result>
+		</action>
+		
+	
+	</package>
+
+</struts>

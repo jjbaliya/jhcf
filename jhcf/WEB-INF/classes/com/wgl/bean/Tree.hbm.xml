@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+	
+	<hibernate-mapping package="com.wgl.bean">
+		<class name="Tree" table="tree">
+			<id name="id" column="id" type="java.lang.Integer">
+				<generator class="native"></generator>
+			</id>
+			<property name="realName" column="realName" type="java.lang.String" length="50"/>
+			<property name="birth" column="birth" type="java.lang.String" length="25" />
+			<property name="rescueTime" column="rescueTime" type="java.lang.String"  length="25"/>
+			<property name="images" column="images" type="java.lang.String" length="50"/>
+			<property name="content" column="content" type="java.lang.String" length="255"/>
+			<property name="gender" column="gender" type="java.lang.String" length="10"/>
+			<property name="ethnic" column="ethnic" type="java.lang.String" length="50"/>
+		</class>
+	</hibernate-mapping>

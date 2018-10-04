@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+    
+    
+    <struts>
+    	<package name="tree" extends="struts-default" namespace="/">
+    	
+    		<action name="tree_*" class="com.wgl.action.TreeAction" method="{1}">   		
+				<result name="addTree">/result.jsp</result>
+				<result name="addTree_error">/result.jsp</result>				
+				<result name="displayTree">/WEB-INF/admin/displayTree.jsp</result>
+				<result name="back">/WEB-INF/admin/uploadTree.jsp</result>
+				<result name="tiao_index">/WEB-INF/jhd/index.jsp</result>
+				<result name="tiaozhuan_Tree">/WEB-INF/admin/uploadTree.jsp</result>
+				<result name="updateTree">/result.jsp</result>
+    			<result name="updateTree_error">/result.jsp</result>
+    			<result name="deleteTree">/result.jsp</result>		
+    			<result name="deleteTree_error">/result.jsp</result>
+    			<result name="getTreeById">/WEB-INF/admin/changeTree.jsp</result>
+				<result name="getTreeById_error"></result>
+				<result name="getAllFontTree">/WEB-INF/jhd/getTree.jsp</result>
+				<result name="defaultTree">/WEB-INF/jhd/growingTrees.jsp</result>
+				<result name="getTreeByName">/WEB-INF/admin/queryByNameResult.jsp</result>
+				<result name="getTreeByName_error">/result.jsp</result>
+				<result name="query">/WEB-INF/admin/queryTreeByName.jsp</result>
+				
+				
+    		</action>
+    	</package> 
+    </struts>

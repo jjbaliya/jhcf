@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<%@page pageEncoding="UTF-8"%>
+<head>
+<title></title>
+
+<meta name="keywords" content="keyword1,keyword2,keyword3">
+<meta name="description" content="this is my page">
+<meta name="content-type" content="text/html; charset=UTF-8">
+
+<!--<link rel="stylesheet" type="text/css" href="./styles.css">-->
+<link rel="stylesheet" href="css/userManger/style.css">
+<script type="text/javascript" src="js/userManger/jquery.min.js"></script>
+<script type="text/javascript" src="js/userManger/main.js"></script>
+</head>
+
+<body>
+	<!--logo-->
+	<span class="logo"> <a class="logo-go goback"
+		href="user/userInfo.jsp">风信子服务队个人信息管理系统</a> <a class="logo-go goblog"
+		href="fxz_index.jsp">返回主页</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="hidden" name="id" value="${vuser.id }" class="logo-go goblog" />
+	</span>
+	<span class="logout"> <a id="user" class="user">${vuser.username
+			}</a>
+		<div id="user-set" class="userSet">
+			<ul>
+				<li><a href="user/userInfo.jsp">个人信息</a></li>
+				<li><a href="user/userChangPass.jsp">密码修改</a></li>
+			</ul>
+		</div> <a href="logout.action">退出</a>
+	</span>
+	</div>
+	<div class="content">
+		<div class="sidebar">
+		<!-- 左侧导航条 -->
+			<ul>
+				<li><a href="https://baike.baidu.com/item/%E9%A3%8E%E4%BF%A1%E5%AD%90%E5%85%AC%E7%9B%8A/20474422?fr=aladdin">风信子公益</a></li>
+				<li><a href="user/changeUserInfo.jsp">信息管理</a></li>
+				<li><a href="userTime.jsp">服务时间</a></li>
+				<li><a href="${pageContext.request.contextPath }/activityEnrollAction!getActivityByUserId.go?userId=${vuser.id}">已报名活动</a></li>
+
+			</ul>
+		</div>
+</body>
+</html>

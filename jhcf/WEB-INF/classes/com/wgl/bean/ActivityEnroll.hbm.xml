@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+	
+	<hibernate-mapping package="com.wgl.bean">
+		<class name="ActivityEnroll" table="activityenroll">
+			<id name="id" column="id">
+				<generator class="native"></generator>
+			</id>
+			
+			<property name="carriage" column="carriage" type="java.lang.String"></property>
+			<property name="role" column="role" type="java.lang.String"></property>
+			<property name="content" column="content" type="java.lang.String"></property>
+			<property name="telephone" column="telephone" type="java.lang.String"></property>
+			<property name="qq" column="qq" type="java.lang.String"></property>
+			<property name="status" column="status" type="java.lang.String"></property>
+		  <property name="enrolltime" column="enrolltime" type="java.lang.String"></property>
+		    <property name="name" column="name" type="java.lang.String"></property>
+		     <property name="gender" column="gender" type="java.lang.String"></property>
+		   
+		   	<!--vuser属性,本类与VUser类的多对一属性 -->
+		<many-to-one name="user" class="VUser" fetch="select" lazy="false" column="userId"></many-to-one>
+		 
+	
+		<many-to-one name="activity" class="Activity" fetch="select" lazy="false" cascade="all" column="activityId"></many-to-one>
+		
+		</class>
+	</hibernate-mapping>

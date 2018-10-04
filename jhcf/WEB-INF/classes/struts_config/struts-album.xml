@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.1.7//EN"
+    "http://struts.apache.org/dtds/struts-2.1.7.dtd">
+<struts>
+	<package name="album" namespace="/album" extends="struts-default">
+	   
+		 <action name="album" class="albumShowAction">
+			<result name="success">/WEB-INF/jhd/album.jsp</result>
+		</action>
+		
+		 <action name="album_detail" class="albumDetailAction">
+			<result name="success">/WEB-INF/jhd/album_detail.jsp</result>
+		</action>
+		
+		<action name="showphoto" class="com.wgl.action.ListPhotoAction" method="listPhoto">
+			
+			<result name="showphoto_success">/listphotos.jsp</result>
+    		<result name="showphoto_error">/listphotos.jsp</result>
+		</action>
+		 
+	</package>
+
+</struts>

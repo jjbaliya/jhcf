@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE validators PUBLIC "-//OpenSymphony Group//XWork Validator 1.0.3//EN"
+"http://www.opensymphony.com/xwork/xwork-validator-1.0.3.dtd">
+
+<validators>
+	<!-- 用户名校验 -->
+	<field name="username">
+		<field-validator type="requiredstring"><!-- 必填字符串校验器 -->
+			<param name="trim">true</param>
+			<message>请填写您的用户名</message>
+		</field-validator>
+	</field>
+	
+	<!-- 密码校验 -->
+	<field name="password">
+		<field-validator type="requiredstring"><!-- 必填字符串校验器 -->
+		<param name="trim">true</param>
+			<message>请填写您的密码</message>
+		</field-validator>
+	</field>
+	
+	<!-- 验证码文本框校验 -->
+	<field name="checkCode">
+		<field-validator type="requiredstring"><!-- 必填字符串校验器 -->
+			<param name="trim">true</param>
+			<message>请填写验证码</message>
+		</field-validator>
+	</field>
+
+</validators>

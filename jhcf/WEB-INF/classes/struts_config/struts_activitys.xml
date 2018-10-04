@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+    
+    <struts>
+    	<package name="activitys" namespace="/" extends="struts-default">
+    		<action name="activitysAction" class="com.wgl.action.ActivitysAction">
+    			<result name="addActivitys" type="redirect">activitysAction!getAllActivitys.go</result>
+    			<result name="addActivitys_error"></result>
+    			<result name="tiaozhuan_Activitys">/WEB-INF/admin/addActivitys.jsp</result>
+    			<result name="getAllActivitys">/WEB-INF/admin/adminActivitys.jsp</result>
+    			<result name="getAllFrontActivitys">/WEB-INF/jhd/activityslist.jsp</result>
+    			<result name="getAllActivitys_error"></result>
+    			<result name="getActivitysById">/WEB-INF/admin/updateActivitys.jsp</result>
+    			<result name="getActivitysById_error"></result>
+    			<result name="upateActivitys" type="redirect">activitysAction!getAllActivitys.go</result>
+    			<result name="deleteActivity" type="redirectAction">
+    			   <param name="actionName">activitysAction</param>
+                   <param name="method">getAllActivitys</param>
+    			</result>
+    			 <result name="getActivityByMychargeSuccess">/WEB-INF/jhd/showEnrollActivityByCharge.jsp</result>	
+    			<result name="getActivityByMychargeerror">/WEB-INF/jhd/index.jsp</result>
+    			
+    			<result name="defaultActivitys">/WEB-INF/jhd/activitysDetail.jsp</result>
+    			
+    			<result name="tiao_index">/WEB-INF/jhd/index.jsp</result>
+    			
+    			<result name="getAllActivitys_query">/WEB-INF/admin/adminActivitys_query.jsp</result>
+    			<result name="getAllActivitys_error_query">/WEB-INF/adminActivitys_query.jsp</result>
+    		</action>
+    	</package> 
+    </struts>

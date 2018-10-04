@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+    
+    
+    <struts>
+    	<package name="activityEnrollAction" extends="struts-default">
+    		<action name="activityEnrollAction" class="com.wgl.action.ActivityEnrollAction">
+    		   <result name="toenroll">/WEB-INF/jhd/addenroll.jsp</result>
+    		    <result name="toLoginUI">/userLogin.jsp</result>
+    		   <result name="enroll_error">/result.jsp</result>
+    		   <result name="toaddactivityenroll">/WEB-INF/jhd/addenroll.jsp</result>
+    		   <result name="getactivityEnrollsById">/WEB-INF/jhd/showEnroll.jsp</result>	
+    		    <result name="getactivityEnrollsById_error">/WEB-INF/jhd/addenroll.jsp</result>
+    		    
+    		      <result name="getactivitynotcheck">/WEB-INF/admin/admin_activityuncheck.jsp</result>	
+    		      <result name="upateActivityEnroll">/WEB-INF/admin/admin_activityuncheck.jsp</result>
+    		      <result name="askOK">/index.jsp</result>	
+    		      <result name="cancelOK">/index.jsp</result>	
+    		 <result name="getactivityByUserId">/user/showEnrollActivity.jsp</result>
+    		 <result name="queryEnrollSuccess">/user/showEnrollActivity_query.jsp</result>
+    		 <result name="queryEnrollFailure">/user/showEnrollActivity_query.jsp</result>	
+    		  <result name="getActivitychargeSuccess">/WEB-INF/jhd/showEnrollActivity_query.jsp</result>	
+    			<result name="getActivitychargeerror">/WEB-INF/jhd/showEnrollActivityByCharge.jsp</result>
+    			<result name="index">/fxz_index.jsp</result>
+    		</action>
+    	</package> 
+    </struts>

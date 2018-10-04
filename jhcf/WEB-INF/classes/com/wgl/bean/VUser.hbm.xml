@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+	
+	<hibernate-mapping package="com.wgl.bean">
+		<class name="VUser" table="v_user">
+			<id name="id" column="id" type="java.lang.Integer">
+				<generator class="native"></generator>
+			</id>
+			
+			<property name="username" column="username" type="java.lang.String" length="50"/>
+			<property name="password" column="password" type="java.lang.String" length="50"/>
+			<property name="realname" column="realname" type="java.lang.String" length="50"/>
+			<property name="idcard" column="idcard" type="java.lang.String" length="100"/>
+			<property name="birthday" column="birthday" type="java.util.Date" />
+			<property name="gender" column="gender" type="java.lang.String" length="50"/>
+			<property name="marital" column="marital" type="java.lang.String" length="50"/>
+			<property name="education" column="education" type="java.lang.String" length="50"/>
+			<property name="job" column="job" type="java.lang.String" length="50"/>
+			<property name="address" column="address" type="java.lang.String" length="50"/>
+			<property name="phone" column="phone" type="java.lang.String" length="50"/>
+			<property name="qqnumber" column="qqnumber" type="java.lang.String" length="50"/>
+			<property name="email" column="email" type="java.lang.String" length="50"/>
+			<property name="status" column="status" type="java.lang.Integer" length="10"/>
+			
+			<set name="activityEnroll" inverse="true" cascade="all">
+			<key column="userId"></key>
+			<one-to-many class="ActivityEnroll" />
+		</set>
+		
+		<set name="activity" inverse="true" cascade="all">
+			<key column="userId"></key>
+			<one-to-many class="Activity" />
+		</set>
+ 
+		</class>
+	</hibernate-mapping>

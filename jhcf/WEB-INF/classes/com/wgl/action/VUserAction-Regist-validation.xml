@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE validators PUBLIC "-//OpenSymphony Group//XWork Validator 1.0.3//EN"
+"http://www.opensymphony.com/xwork/xwork-validator-1.0.3.dtd">
+
+<validators>
+	<!-- 用户名校验 -->
+	<field name="username">
+		<field-validator type="requiredstring"><!-- 必填字符串校验器 -->
+			<param name="trim">true</param>
+			<message>请填写您的用户名</message>
+			<pre name="code" class="plain">
+		</field-validator>
+
+		<field-validator type="stringlength">
+			<param name="minLength">6</param>
+			<param name="maxLength">11</param>
+			<message>用户名长度应在6到11个字符间</message>
+		</field-validator>
+	</field>
+
+	<!-- 密码校验 -->
+	<field name="password">
+		<field-validator type="requiredstring"><!-- 必填字符串校验器 -->
+			<message>请填写您的密码</message>
+		</field-validator>
+
+		<field-validator type="regex"> <!-- 字符串长度校验器 -->
+			<param name="regexExpression"><![CDATA[(\w{6,16})]]></param>
+
+			<message>为了您账号的安全，密码必须是字母或数字且长度在6~15之间</message>
+		</field-validator>
+	</field>
+<!-- 两次密码一致 -->
+	<field name="password1">
+	<field-validator type="requiredstring"><!-- 必填字符串校验器 -->
+			<message>请填写确认密码</message>
+		</field-validator>
+		<field-validator type="fieldexpression">
+			<!--指定逻辑表达式 -->
+			<param name="expression"><![CDATA[password==password1]]></param>
+			<message>密码必须和确认密码相等</message>
+		</field-validator>
+	</field>
+	<!-- 身份证名字校验 -->
+	<field name="realname">
+		<field-validator type="requiredstring"><!-- 必填字符串校验器 -->
+			<param name="trim">true</param>
+			<message>请填写您本人身份证上的名字</message>
+			<pre name="code" class="plain">
+		</field-validator>
+	</field>
+
+	<!-- 身份证号码校验 -->
+	<!-- 18位前17位为数字，最后一位是校验位，可能为数字或字符X -->
+	<field name="idcard">
+		<field-validator type="requiredstring">
+			<message>请填写您的身份证号码</message>
+		</field-validator>
+		<field-validator type="regex"> <!-- 字符串长度校验器 -->
+			<param name="regexExpression"><![CDATA[(^[1-9]\d{5}(18|19|([23]\d))\d{2}((0[1-9])|(10|11|12))(([0-2][1-9])|10|20|30|31)\d{3}[0-9Xx]$)|(^[1-9]\d{5}\d{2}((0[1-9])|(10|11|12))(([0-2][1-9])|10|20|30|31)\d{2}$)]]></param>
+			<message>身份证输入不合法</message>
+		</field-validator>
+	</field>
+	<!-- 出生日期格式校验 -->
+	<field name="birthday">
+		<field-validator type="date" type="required">
+			<message>请填写您的出生日期</message>
+		</field-validator>
+		<field-validator type="regex"> <!-- 字符串长度校验器 -->
+			<param name="regexExpression"><![CDATA[(^((((1[6-9]|[2-9]\d)\d{2})-(0?[13578]|1[02])-(0?[1-9]|[12]\d|3[01]))|(((1[6-9]|[2-9]\d)\d{2})-(0?[13456789]|1[012])-(0?[1-9]|[12]\d|30))|(((1[6-9]|[2-9]\d)\d{2})-0?2-(0?[1-9]|1\d|2[0-8]))|(((1[6-9]|[2-9]\d)(0[48]|[2468][048]|[13579][26])|((16|[2468][048]|[3579][26])00))-0?2-29-))$)]]></param>
+			<message>日期输入不合法</message>
+		</field-validator>
+	</field>
+	<!-- 性别选项不为空 -->
+	<field name="gender">
+		<field-validator type="requiredstring">
+			<message>请选择您的性别</message>
+		</field-validator>
+	</field>
+	
+	<!-- 婚姻状况选项不为空 -->
+	<field name="marital">
+		<field-validator type="requiredstring">
+			<message>请选择您的性别</message>
+		</field-validator>
+	</field>
+	
+	<!-- 教育程度选项不为空 -->
+	<field name="education">
+		<field-validator type="requiredstring">
+			<message>请选择您的性别</message>
+		</field-validator>
+	</field>
+	
+	<!-- 职业选项不为空 -->
+	<field name="job">
+		<field-validator type="requiredstring">
+			<message>请选择您的性别</message>
+		</field-validator>
+	</field>
+
+	<!-- 手机号码校验 -->
+	<field name="phone">
+		<field-validator type="phone" type="requiredstring">
+			<message>请填写手机号码</message>
+		</field-validator>
+		<field-validator type="regex"> <!-- 字符串长度校验器 -->
+			<param name="regexExpression"><![CDATA[(^1(3|4|5|7|8)\d{9}$)]]></param>
+			<message>手机号码输入不合法</message>
+		</field-validator>
+	</field>
+	<!-- QQ选项校验 -->
+	<field name="qqnumber">
+	<field-validator type="qqnumber" type="requiredstring">
+			<message>请填写您的QQ号码</message>
+		</field-validator>
+		<field-validator type="regex"> <!-- 字符串长度校验器 -->
+			<param name="regexExpression"><![CDATA[([1-9][0-9]{4,14})]]></param>
+			<message>QQ号码输入不合法</message>
+		</field-validator>
+	</field>
+	<!-- 邮箱认证 -->
+	<field name="email">
+	<field-validator type="email" type="requiredstring">
+			<message>请填写您的QQ号码</message>
+		</field-validator>
+		<field-validator type="email">
+			<param name="regexExpression"><![CDATA[(^[A-Za-z0-9\u4e00-\u9fa5]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$)]]></param>
+			<message>你的电子邮件地址必须是一个有效的电邮地址</message>
+		</field-validator>
+	</field>
+	
+	<!-- 验证码必须输入 -->
+	<field name="checkCode">
+		<field-validator type="requiredstring"><!-- 必填字符串校验器 -->
+			<param name="trim">true</param>
+			<message>请填写验证码</message>
+		</field-validator>
+	</field>
+</validators>

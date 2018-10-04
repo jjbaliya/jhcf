@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+    
+    <struts>
+    	<package name="admin" extends="struts-default">
+    	<!-- 
+    	<interceptors>
+    		<interceptor name="myInterceptor" class="com.wgl.common.PermissionInterceptor"></interceptor>
+    		<interceptor-stack name="myStack">
+    			<interceptor-ref name="myInterceptor"></interceptor-ref>
+    			<interceptor-ref name="defaultStack"></interceptor-ref>
+    		</interceptor-stack>
+    	</interceptors>
+    	  -->
+    		<action name="adminAction" class="com.wgl.action.AdminAction">
+    		
+    			<!--  <interceptor-ref name="myStack"></interceptor-ref>-->
+    			
+    			<result name="addadmin_success">/admin_login.jsp</result>
+    			<result name="admin_login">/admin_login.jsp</result>
+    			<result name="success">/WEB-INF/admin/index.jsp</result>
+    			<result name="getTop">/WEB-INF/admin/header.jsp</result>
+    			<result name="getMenu">/WEB-INF/admin/menu.jsp</result>
+    			<result name="getMain">/WEB-INF/admin/main.jsp</result>
+    			<result name="add_success" type="redirect">adminAction!getAllAdmin.go</result>
+    			<result name="toaddadmin">/WEB-INF/admin/addAdmins.jsp</result>
+    			<result name="tiaozhuan_admin">/WEB-INF/admin/addUser.jsp</result>
+    			<result name="addAdmin" type="redirect">userAction!getAllAdmin.go</result>
+    			<result name="addAdmin_error"></result>
+    			<result name="update_success" type="redirect">adminAction!getAllAdmin.go</result>
+    			<result name="getAllAdmin">/WEB-INF/admin/listadmin.jsp</result>
+    			<result name="getAllAdmin_error"></result>
+    			<result name="upadteAdmin" type="redirect">userAction!getAllAdmin.go</result>
+    			<result name="deleteAdmin" type="redirectAction">
+    				<param name="actionName">adminAction</param>
+    				<param name="method">getAllAdmin</param>
+    			</result>
+    			<result name="getAdminById">/WEB-INF/admin/updateAdmin.jsp</result>
+    			<result name="getAdminById_error">/WEB-INF/admin/updateAdmin.jsp</result>
+    			<result name="abc">/admin_login.jsp</result>
+    			<result name="getAdminSuccess" type="redirect">getAllAdmin.do</result>
+    			<result name="getAdmin_error"></result>
+    		</action>
+    		<action name="adminAction2" class="com.wgl.action.AdminAction">
+    		<!--  
+    			<result name="getAdminSuccess" type="redirect">adminAction!login.go</result>
+    			 -->
+    			 <result name="getAdminSuccess">/WEB-INF/admin/index.jsp</result>
+    			<result name="getAdminfailure">/admin_login.jsp</result>
+    		</action>
+    	</package>
+    </struts>

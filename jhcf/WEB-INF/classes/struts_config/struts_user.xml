@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+    
+    <struts>
+    	<package name="user" extends="struts-default">
+    	<interceptors>
+    		<interceptor name="myInterceptor" class="com.wgl.common.PermissionInterceptor"></interceptor>
+    		<interceptor-stack name="myStack">
+    			<interceptor-ref name="myInterceptor"></interceptor-ref>
+    			<interceptor-ref name="defaultStack"></interceptor-ref>
+    		</interceptor-stack>
+    	</interceptors>
+    		<action name="userAction" class="com.wgl.action.UserAction">
+    			<interceptor-ref name="myStack"></interceptor-ref>
+    			<result>/WEB-INF/admin/index.jsp</result>
+    			<result name="getTop">/WEB-INF/admin/header.jsp</result>
+    			<result name="getMenu">/WEB-INF/admin/menu.jsp</result>
+    			<result name="getMain">/WEB-INF/admin/main.jsp</result>
+    			
+    			<result name="tiaozhuan_user">/WEB-INF/admin/addUser.jsp</result>
+    			<result name="register_successs">/admin_login.jsp</result>
+    			<result name="addUser_error"></result>
+    			<result name="getAllUser">/WEB-INF/admin/adminUser.jsp</result>
+    			<result name="getAllUser_error"></result>
+    			<result name="upadteUser" type="redirect">userAction!getAllUser.go</result>
+    			<result name="deleteUser" type="redirectAction">
+    				<param name="actionName">userAction</param>
+    				<param name="method">getAllUser</param>
+    			</result>
+    			<result name="getUserById">/WEB-INF/admin/updateUser.jsp</result>
+    			<result name="getUserById_error"></result>
+    			<result name="abc">/login.jsp</result>
+    			<result name="getUserSuccess" type="redirect">userAction!login.go</result>
+    			<result name="getUser_error"></result>
+    		</action>
+    		<action name="userAction2" class="com.wgl.action.UserAction">
+    			<result name="getUserSuccess" type="redirect">userAction!login.go</result>
+    			<result name="abc">/login.jsp</result>
+    		</action>
+    	</package>
+    </struts>

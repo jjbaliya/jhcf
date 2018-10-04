@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+    
+    <struts>
+    	 <package name="liu"  extends="struts-default">
+    	  <action name="toadddoc" class="docAction">
+    	   <result>/WEB-INF/admin/docAdd.jsp</result>
+        </action>
+    		  <action name="docAdd" class="docAction" method="docAdd">
+    		  <result name="success" type="chain">docMana</result>
+        </action>
+        <action name="docDel" class="docAction" method="docDel">
+          <result name="success" type="chain">docMana</result>
+        </action>
+        <action name="docMana" class="docAction" method="docMana">
+            <result name="success">/WEB-INF/admin/docMana.jsp</result>
+        </action>
+        <action name="docAll" class="docAction" method="docAll">
+            <result name="success">/WEB-INF/jhd/docAll.jsp</result>
+        </action>
+        <action name="docDetailQian" class="docAction" method="docDetailQian">
+            <result name="success">/WEB-INF/jhd/docDetailQian.jsp</result>
+        </action>
+        
+         <action name="upload" class="com.util.upload" method="upload">
+             <result name="success">/upload/upload_re.jsp</result>
+        </action>
+        
+    	</package> 
+    </struts>

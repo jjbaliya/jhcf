@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+	
+	<hibernate-mapping package="com.wgl.bean">
+		<class name="User" table="t_user">
+			<id name="id" column="id">
+				<generator class="native"></generator>
+			</id>
+			<property name="name" column="name" type="java.lang.String" length="50"></property>
+			<property name="password" column="password" type="java.lang.String" length="50"></property>
+		     <property name="realname" type="java.lang.String">
+            <column name="realname" length="50" not-null="true" />
+        </property>
+        <property name="idcard" type="java.lang.String">
+            <column name="idcard" length="100" not-null="true" />
+        </property>
+        <property name="birthday">
+            <column name="birthday" length="19" not-null="true" />
+        </property>
+        <property name="gender" type="java.lang.String">
+            <column name="gender" length="50" not-null="true" />
+        </property>
+        <property name="marital" type="java.lang.String">
+            <column name="marital" length="50" />
+        </property>
+        <property name="education" type="java.lang.String">
+            <column name="education" length="50" />
+        </property>
+        <property name="job" type="java.lang.String">
+            <column name="job" length="50" />
+        </property>
+        <property name="address" type="java.lang.String">
+            <column name="address" length="50" />
+        </property>
+        <property name="phone" type="java.lang.String">
+            <column name="phone" length="50" />
+        </property>
+        <property name="qqnumber" type="java.lang.String">
+            <column name="qqnumber" length="50" />
+        </property>
+        <property name="email" type="java.lang.String">
+            <column name="email" length="50" />
+        </property>
+        <property name="status" type="java.lang.Integer">
+            <column name="status" not-null="true" />
+        </property>
+        
+			<set name="activityEnroll" inverse="true" cascade="all">
+			<key column="userId"></key>
+			<one-to-many class="ActivityEnroll" />
+		</set>
+ 
+		</class>
+	</hibernate-mapping>

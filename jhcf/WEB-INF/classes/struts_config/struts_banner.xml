@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+    
+    
+    <struts>
+    	<package name="banner" extends="struts-default" namespace="/">
+    	
+    		<action name="banner_*" class="com.wgl.action.BannerAction" method="{1}">   		
+				<result name="addBanner">/result.jsp</result>
+				<result name="addBanner_error">/result.jsp</result>
+				<result name="fiveBanner">/index.jsp</result>
+				<result name="allBanner">/WEB-INF/admin/allBanner.jsp</result>
+				<result name="getBannerById">/WEB-INF/admin/changeBanner.jsp</result>
+				<result name="getBannerById_error"></result>
+				<result name="deleteBanner">/result.jsp</result>		
+    			<result name="deleteBanner_error">/result.jsp</result>
+    			<result name="updateBanner">/result.jsp</result>
+    			<result name="updateBanner_error">/result.jsp</result>
+    			<result name="tiao_index">/WEB-INF/jhd/index.jsp</result>
+    			<result name="tiaozhuan_Banner">/WEB-INF/admin/uploadBanner.jsp</result>	
+    		</action>
+    	</package> 
+    </struts>

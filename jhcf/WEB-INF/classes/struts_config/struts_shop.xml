@@ -1,0 +1,438 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<!-- 当 struts的配置文件修改后，系统是否自动重新加载该文件，默认值为false（生 产环境下使用），开发阶段最好打开 -->   
+   <constant name="struts.configuration.xml.reload" value="true" />   
+   <!-- 开发模式下使用，这样可以打印出更详细的错误信息 -->   
+   <constant name="struts.devMode" value="true" /> 
+  <!-- 解决action与servlet的共存问题 -->
+  <constant name="struts.action.extension" value="action"></constant>
+  <!-- 添加约束将Action的托管交给Spring框架 -->
+  <constant name="objectFactory" value="Spring"></constant>
+  <!--指定Web应用的默认编码集 -->
+  <constant name="struts.i18n.encoding" value="utf-8"></constant>
+	
+	<package name="shop" extends="struts-default" namespace="/" >
+	
+	<!-- 拦截器 用于生成订单 -->
+	  <interceptors>
+	  	<interceptor name="orderInter" class="com.wgl.interceptor.OrderInterceptor"></interceptor>
+	  	<interceptor name="orderDetailInter" class="com.wgl.interceptor.OrderDetailInterceptor"></interceptor>
+	  </interceptors>
+	
+	<action name="functions_add" class="functionsAction" method="add">
+		<result>/jsp/back/functionsManager.jsp</result>
+		</action>
+		<action name="functions_delete" class="functionsAction" method="delete">
+		<result>/jsp/back/functionsManager.jsp</result>
+		</action>
+		<action name="functions_update" class="functionsAction" method="update">
+		<result>/jsp/back/functionsManager.jsp</result>
+		</action>
+		<action name="functionsByPage" class="functionsAction" method="byPage">
+		<result>/jsp/back/functionsManager.jsp</result>
+		</action>
+		
+		<action name="findOK" class="functionsAction" method="preUpdate">
+		<result name="preUpdateOk">/jsp/back/modifyFunction.jsp</result>
+		</action>
+		<action name="findFunctionsAllOk" class="functionsAction" method="findAll">
+		<result name="FfindAllOK">/jsp/back/adminsCategoryManager.jsp</result> 	
+		</action>
+		 	
+	
+	<!--admin actions -->	
+		<action name="adminsByPage" class="adminsAction" method="byPage">
+		<result>/jsp/back/showAdmins.jsp</result>
+		</action>
+		<action name="login_check" class="adminsAction" method="checkLogin">
+		<result name="loginOK">/jsp/back/index.jsp</result>
+		<result name="loginFail">/jsp/back/login.jsp</result>
+		</action>
+		
+		<action name="logout_Admin" class="adminsAction" method="logout">
+		<result name="logoutOK">/jsp/back/excessive.jsp</result>
+		</action>
+		
+		<action name="admins_add" class="adminsAction" method="addAdmins">
+		<result name="addOK">/jsp/back/showAdmins.jsp</result>
+		</action>
+		
+		<action name="admins_delete" class="adminsAction" method="deleteAdmin">
+		<result name="deleteOK">/jsp/back/showAdmins.jsp</result>
+		</action>
+		
+		<action name="admins_preUpdate" class="adminsAction" method="findByadminId">
+		<result name="findbyIdOK" type="chain">
+		<param name="actionName">adminsCategoryToadmins </param> 
+        <param name="namespace">/</param>  
+		</result>
+		</action>
+		
+		<action name="admins_Update" class="adminsAction" method="admind_Update">
+		<result name="updateOK">/jsp/back/showAdmins.jsp</result>
+		</action>
+		
+		<!--adminsCategory actions -->	
+		<action name="adminsCategory_add" class="adminsCategoryAction" method="add">
+		<result>/jsp/back/showAdminsCategory.jsp</result>
+		</action>
+		
+		<action name="adminsCategory_findAll" class="adminsCategoryAction" method="findAllCate">
+		<!--  <result name="findAllOk">/jsp/back/adminsCategoryManager.jsp</result>-->
+		<result name="findAllOk">/jsp/back/showAdminsCategory.jsp</result>
+		</action>
+		
+		<action name="adminsCategoryToadmins" class="adminsCategoryAction" method="findAllCate">
+		<!--  <result name="findAllOk">/jsp/back/adminsCategoryManager.jsp</result>-->
+		<result name="findAllOk">/jsp/back/modifyAdmins.jsp</result>
+		</action>
+		
+		<!-- 用于添加admin时 -->
+		<action name="adminsCategory_findALLToAdmins" class="adminsCategoryAction" method="findAllCate">
+		<result name="findAllOk">/jsp/back/addAdmins.jsp</result>
+		</action>
+		<action name="adminsCategory_delete" class="adminsCategoryAction" method="deleteByAcname">
+		<result name="deleteOK">/jsp/back/showAdminsCategory.jsp</result>
+		</action>
+		
+		<!--  <action name="adminsCategory_update" class="adminsCategoryAction" method="admminsCategorUpdate">
+		<result name="updateOK">/jsp/back/showAdminsCategory.jsp</result>
+		</action>
+		-->
+	
+	<!--GoodsType actions -->	
+		<action name="Goods_getParentType" class="goodsTypeAction" method="getParentType">
+		<result name="findParentTypeOK">/jsp/back/addGoodsType.jsp</result>
+		</action>
+		
+	
+		
+		<action name="Goods_getParentType2" class="goodsTypeAction" method="getParentTypeBySeeion">
+		<result name="findParentType">/jsp/back/showGoodsType.jsp</result>
+		</action>
+		
+		<action name="Goods_getParentTypeToFront" class="goodsTypeAction" method="getParentTypeBySeeion">
+		<!--  
+		<result name="findParentType" type="chain">
+			<param name="actionName">Announce_findAllAnnounce</param> 
+        	<param name="namespace">/</param>  
+			</result>
+		-->
+		<result name="findParentType">/jsp/front/index.jsp</result>
+		</action>
+		
+		<action name="Goods_getParentTypeByselect" class="goodsTypeAction" method="getParentType">
+		<result name="findParentTypeOK">/jsp/back/showGoodsType.jsp</result>
+		</action>
+		
+		<action name="Goods_getAllParentType" class="goodsTypeAction" method="getAllParentType">
+		<result name="findAllParentTypeOK">/jsp/back/showGoodsParentType.jsp</result>
+		</action>
+		
+		<action name="Goods_findGoodsType" class="goodsTypeAction" method="getGoodsTypeByParentId">
+		<result name="findTypeOK">/jsp/back/showGoodsType.jsp</result>
+		</action>
+		
+		<action name="findGoodsType_toFront" class="goodsTypeAction" method="getGoodsTypeByParentId1">
+		<result name="findTypeOK">/jsp/front/showGoodsByParentType.jsp</result>
+		</action>
+		
+		<action name="GoodType_add" class="goodsTypeAction" method="addGoodsType">
+		<result name="addOK">/jsp/back/showGoodsType.jsp</result>
+		</action>
+		
+		<action name="GoodType_add1" class="goodsTypeAction" method="addGoodsType">
+		<result name="addOK">/jsp/back/showGoodsParentType.jsp</result>
+		</action>
+		
+		<action name="GoodType_preUpdate" class="goodsTypeAction" method="preUpdate">
+		<result name="findByIdOK">/jsp/back/modifyGoodsType.jsp</result>
+		</action>
+		
+		<action name="GoodType_Update" class="goodsTypeAction" method="updateGoodsType">
+		<result name="updateOK">/jsp/back/showGoodsType.jsp</result>
+		</action>
+		
+		<action name="GoodType_delete" class="goodsTypeAction" method="deleteGoodsType">
+		<result name="deleteOK">/jsp/back/showGoodsType.jsp</result>
+		</action>
+		
+		
+		<action name="GoodParentType_preUpdate" class="goodsTypeAction" method="preUpdate">
+		<result name="findByIdOK">/jsp/back/modifyGoodsParentType.jsp</result>
+		</action>
+		
+		<action name="GoodParentType_Update" class="goodsTypeAction" method="updateGoodsType">
+		<result name="updateOK">/jsp/back/showGoodsParentType.jsp</result>
+		</action>
+		
+		<action name="GoodParentType_delete" class="goodsTypeAction" method="deleteGoodsParentType">
+		<result name="deleteParentOK">/jsp/back/showGoodsParentType.jsp</result>
+		</action>
+		
+		<action name="Goods_getParentType1" class="goodsTypeAction" method="getParentTypeBySeeion">
+		<result name="findParentType">/jsp/back/addGoods.jsp</result>
+		</action>
+		
+		<action name="getSecondSelect" class="goodsTypeAction" method="getSecondSelect">
+		<result>/jsp/back/main1.jsp</result>
+		</action>
+		
+		<action name="ceshi" class="goodsTypeAction" method="ceshi">
+		
+		</action>
+	<!--GoodsAttr actions -->		
+		<action name="GoodAttr_add" class="goodsAttrAction" method="addGoodsAttr">
+		<result name="addOK">/jsp/back/showGoodsAttr.jsp</result>
+		</action>
+		
+		<action name="GoodAttr_findAll" class="goodsAttrAction" method="findAllAttr">
+		<result name="findOK">/jsp/back/showGoodsAttr.jsp</result>
+		</action>
+		
+		<action name="GoodAttr_delete" class="goodsAttrAction" method="delelteGoodsAttr">
+		<result name="deleteOK">/jsp/back/showGoodsAttr.jsp</result>
+		</action>
+		
+		
+		<!--GoodsInfo actions -->
+		<action name="goodsInfo_add" class="GoodsInfoAction" method="addGoodsInfo">
+		<result name="addOK">/jsp/back/showGoods.jsp</result>
+		<result name="addOK">/jsp/back/showGoods.jsp</result>
+		</action>	
+		
+		<action name="GoodsInfo_FindAll" class="GoodsInfoAction" method="findAllGoodsInfo">
+			<result name="findOK" type="chain">
+			<param name="actionName">goodsInfo_findNewShelf</param> 
+        	<param name="namespace">/</param>  
+			</result>
+		</action>	
+		<action name="goodsInfo_findNewShelf" class="GoodsInfoAction" method="findByNewShelf">
+		 	<result name="findNewGoodsOK" type="chain">
+			<param name="actionName">GoodsInfo_findHotSale</param> 
+        	<param name="namespace">/</param>  
+			</result>
+		<!-- 	<result name="findNewGoodsOK">/jsp/front/Test.jsp</result>-->
+		</action>
+		
+		
+		<action name="GoodsInfo_findHotSale" class="GoodsInfoAction" method="findHotSale">
+		<result name="findHotSaleOK" type="chain">
+			<param name="actionName">pageImage_findAllToFront</param> 
+        	<param name="namespace">/</param>  
+		</result>
+		</action>	
+		
+		<action name="GoodsInfo_findByPage" class="GoodsInfoAction" method="findByPage">
+		<result>/jsp/back/showGoods.jsp</result>
+		</action>	
+		
+		
+		<action name="GoodsInfo_batchDelete" class="GoodsInfoAction" method="batchDelete">
+		<result name="batchDeleteOK">/jsp/back/showGoods.jsp</result>
+		<result name="batchDeteleError">/jsp/back/showGoods.jsp</result>
+	
+		</action>	
+		
+		
+		<action name="GoodsInfo_Delete" class="GoodsInfoAction" method="delete">
+		<result name="deleteOK">/jsp/back/showGoods.jsp</result>
+		</action>
+		
+		<action name="GoodsInfo_findById" class="GoodsInfoAction" method="findById">
+		<result name="findOK">/jsp/front/goodsDetails.jsp</result>
+		</action>
+		
+		
+		
+	<!-- 	
+		<action name="GoodsInfo_findByType" class="GoodsInfoAction" method="findByType">
+		<result name="findOK">/jsp/front/showGoodsByParentType.jsp</result>
+		</action>
+		 -->
+		<action name="GoodsInfo_findByType" class="GoodsInfoAction" method="findByPagetoFront">
+		<result>/jsp/front/showGoodsByParentType.jsp</result>
+		</action>
+		
+		
+		<action name="GoodsInfo_findByPageToSelect" class="GoodsInfoAction" method="findByPageToSelect">
+		<result name="findOK">/jsp/front/showGoodsBySelect.jsp</result>
+		</action>
+		
+		
+		
+		 <!-- Users Action -->
+	  
+	  	<action name="GoodsInfo_FindAll1" class="GoodsInfoAction" method="findAllGoodsInfo">
+			<result name="findOK" type="chain">
+			<param name="actionName">goodsInfo_findNewShelf1</param> 
+        	<param name="namespace">/</param>  
+			</result>
+		</action>
+		<action name="goodsInfo_findNewShelf1" class="GoodsInfoAction" method="findByNewShelf">
+		 	<result name="findNewGoodsOK" type="chain">
+			<param name="actionName">GoodsInfo_findHotSale1</param> 
+        	<param name="namespace">/</param>  
+			</result>
+		<!-- 	<result name="findNewGoodsOK">/jsp/front/Test.jsp</result>-->
+		</action>
+		
+		<action name="GoodsInfo_findHotSale1" class="GoodsInfoAction" method="findHotSale">
+		<result name="findHotSaleOK" type="chain">
+			<param name="actionName">Goods_getParentTypeToFront1</param> 
+        	<param name="namespace">/</param>  
+		</result>
+		</action>	
+		
+		<action name="Goods_getParentTypeToFront1" class="goodsTypeAction" method="getParentTypeBySeeion">
+		<result name="findParentType">/jsp/front/addUser.jsp</result>
+		</action>
+		
+	  	<action name="Users_Add" class="usersAction" method="addUser">
+	  	<result name="addUserOK" type="chain">
+			<param name="actionName">GoodsInfo_FindAll</param> 
+        	<param name="namespace">/</param>  
+			</result>
+		
+		</action>
+	  		
+	  		
+	  		
+	  		<action name="Users_checkLogin" class="usersAction" method="checkLogin">
+	  		<result name="loginOK">/jsp/front/index.jsp</result>
+			<result name="loginFail">/jsp/front/index.jsp</result>
+			</action>
+			
+			<action name="Users_logout" class="usersAction" method="logout">
+	  		<result name="logoutOK">/jsp/front/index.jsp</result>
+			</action>
+			
+			<action name="Users_byPage" class="usersAction" method="byPage">
+	  		<result>/jsp/back/showUsers.jsp</result>
+			</action>
+			
+			
+			<action name="Users_delete" class="usersAction" method="delete">
+	  		<result>/jsp/back/showUsers.jsp</result>
+			</action>
+			
+			<action name="Users_batchDelete" class="usersAction" method="batchDelete">
+	  		<result>/jsp/back/showUsers.jsp</result>
+			</action>
+			
+			<action name="cartAdd" class="GoodsInfoAction" method="add">
+	  		<result name="addGoodsOK">/jsp/front/cart.jsp</result>
+			</action>
+			
+			<action name="cartRemove" class="GoodsInfoAction" method="remove">
+	  		<result name="removeGoodsOK">/jsp/front/cart.jsp</result>
+			</action>
+			
+			<action name="cartRefresh" class="GoodsInfoAction" method="refreshCart">
+	  		<result name="refreshCartOK">/jsp/front/cart.jsp</result>
+	  		<result name="refreshCartERROR">/jsp/front/cart.jsp</result>
+	  		
+			</action>
+			
+			<action name="cartAdd1" class="GoodsInfoAction" method="add">
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<interceptor-ref name="orderInter"></interceptor-ref>
+	  		<result name="addGoodsOK">/jsp/front/order.jsp</result>
+	  		<result name="OrderFail">/jsp/front/index.jsp</result>
+			</action>
+			
+			
+			<!-- orders ACTION -->
+			<action name="makeOrder" class="ordersAction" method="addOrders">
+			<result name="makeOrdersOK">/jsp/front/index.jsp</result>
+			</action>
+			
+			
+			
+			<action name="order_batchDelete" class="ordersAction" method="batchDelete">
+			<result>/jsp/back/showOrderDetail.jsp</result>
+			</action>
+			
+			<action name="order_sendOrder" class="ordersAction" method="sendOrder">
+			<result name="sendOK">/jsp/back/showOrderDetail.jsp</result>
+			</action>
+			
+			<action name="order_makeOrder" class="ordersAction" method="makeOrder">
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<interceptor-ref name="orderInter"></interceptor-ref>
+			<result name="makeOK">/jsp/front/order.jsp</result>
+			<result name="OrderFail">/jsp/front/cart.jsp</result>
+			<result name="cartIsERROR">/jsp/front/cart.jsp</result>
+			</action>
+			
+			
+			<action name="order_seeOrders" class="ordersAction" method="seeOrders">
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<interceptor-ref name="orderDetailInter"></interceptor-ref>
+			<result name="seeOK">/jsp/front/myOrders.jsp</result>
+			<result name="OrderFail">/jsp/front/index.jsp</result>
+			<result name="OrderOk">/jsp/front/myOrders.jsp</result>
+			</action>
+			
+			
+			<!-- ordersDetail ACTION -->
+			<action name="ordersDetail_byPage" class="orderDetailAction" method="byPage">
+			<result>/jsp/back/showOrderDetail.jsp</result>
+			</action>
+			
+			
+			<action name="ordersDetail_byPageToOrder" class="orderDetailAction" method="byPageToOrder">
+			<result name="findOK">/jsp/front/myOrders.jsp</result>
+			</action>
+			
+			
+			
+			<action name="ordersDetail_orderDetailbyID1" class="orderDetailAction" method="orderDetailbyID">
+			<result name="findOK">/jsp/front/goodsReview.jsp</result>
+			</action>
+			
+			
+			<action name="ordersDetail_orderDetailbyID" class="orderDetailAction" method="orderDetailbyID">
+			<result name="findOK">/jsp/front/orderDetail.jsp</result>
+			</action>
+			
+			<!-- fristPageImage action -->
+			<action name="pageImage_Add" class="firstPageImageAction" method="addPageImage">
+			<result name="addOK">/jsp/back/showAdvertising.jsp</result>
+			</action>
+			
+			
+			<action name="pageImage_findAll" class="firstPageImageAction" method="findAll">
+			<result name="findAllOK">/jsp/back/showAdvertising.jsp</result>
+			</action>
+			
+			<action name="pageImage_findAllToFront" class="firstPageImageAction" method="findAll">
+			<result name="findAllOK" type="chain">
+			<param name="actionName">Goods_getParentTypeToFront</param> 
+        	<param name="namespace">/</param>  
+			</result>
+			</action>
+			
+			<action name="pageImage_preUpdate" class="firstPageImageAction" method="preUpdate">
+			<result name="findByIdOK">/jsp/back/modifyAdvertising.jsp</result>
+			</action>
+			
+			<action name="pageImage_update" class="firstPageImageAction" method="update">
+			<result name="updateOK">/jsp/back/showAdvertising.jsp</result>
+			</action>
+			<action name="pageImage_delete" class="firstPageImageAction" method="delete">
+			<result name="deleteOK">/jsp/back/showAdvertising.jsp</result>
+			</action>
+			
+			
+	
+	</package> 
+	
+	
+	
+
+
+</struts>    

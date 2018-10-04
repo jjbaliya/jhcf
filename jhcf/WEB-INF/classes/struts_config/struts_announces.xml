@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+    
+    
+    <struts>
+    	<package name="announces" namespace="/" extends="struts-default">
+    		<action name="announcesAction" class="com.wgl.action.AnnouncesAction">
+    			<result name="addAnnounces" type="redirect">announcesAction!getAllAnnounces.go</result>
+    			<result name="addAnnounces_error"></result>
+    			<result name="tiaozhuan_Announces">/WEB-INF/admin/addAnnounces.jsp</result>
+    			<result name="getAllAnnounces">/WEB-INF/admin/adminAnnounces.jsp</result>
+    			<result name="getAllFrontAnnounces">/WEB-INF/jhd/announceslist.jsp</result>
+    			<result name="getAllAnnounces_error"></result>
+    			<result name="getAnnouncesById">/WEB-INF/admin/updateAnnounces.jsp</result>
+    			<result name="getAnnouncesById_error"></result>
+    			<result name="upateAnnounces" type="redirect">announcesAction!getAllAnnounces.go</result>
+    			<result name="deleteAnnounce" type="redirectAction">
+    			   <param name="actionName">announcesAction</param>
+                   <param name="method">getAllAnnounces</param>
+    			</result>
+    			
+    			
+    			
+    			<result name="defaultAnnounces">/WEB-INF/jhd/announcesDetail.jsp</result>
+    			
+    			<result name="tiao_index">/WEB-INF/jhd/index.jsp</result>
+    			
+    			<result name="getAllFrontAnnounces_query">/WEB-INF/admin/adminAnnounces_query.jsp</result>
+    			<result name="getAllAnnounces_error_query">/WEB-INF/admin/adminAnnounces_query.jsp</result>
+    			
+    			<result name="getAllAnnouncesByGroupname">/WEB-INF/jhd/frontAnnounces.jsp</result>
+    			<result name="getAllAnnouncesByGroupname_error">/WEB-INF/jhd/frontAnnounces.jsp</result>
+    			
+    			<result name="admin_groupnameannounce">/WEB-INF/admin/adminGroupnameAnnounces.jsp</result>
+    			<result name="admin_groupnameannounce_error">/WEB-INF/admin/adminGroupnameAnnounces.jsp</result>
+    			<result name="grounameannounces">/WEB-INF/admin/categoryAnnounces.jsp</result>
+    			<result name="getAllGroupnameAnnounces_query">/WEB-INF/admin/adminGroupnameAnnounces.jsp</result>
+    			<result name="getAllGroupnameAnnounces_error_query">/WEB-INF/admin/adminGroupnameAnnounces.jsp</result>
+    			
+    		</action>
+    	</package> 
+    </struts>

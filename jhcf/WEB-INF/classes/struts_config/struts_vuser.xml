@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+    
+    <struts>
+    <package name="default" extends="struts-default" namespace="/">
+   		<action name="Login" class="com.wgl.action.VUserAction" method="login">
+			<result name="input">/userLogin.jsp</result>
+			<result name="success">/result.jsp</result>
+		</action>
+		
+		<action name="Regist" class="com.wgl.action.VUserAction" method="addUser">
+			<result name="input">/register.jsp</result>
+			<result name="success">/result.jsp</result>
+		</action>
+		<action name="getVUserInfo" class="com.wgl.action.VUserAction" method="getVUserInfo">
+			<result name="success">/user/userInfo.jsp</result>
+
+		</action>
+		<action name="logout" class="com.wgl.action.VUserAction" method="logout">
+			<result name="success">/user/logout.jsp</result>
+		</action>
+		<action name="updatePassowrd" class="com.wgl.action.VUserAction" method="updatePassowrd">
+			<result name="updatePassowrd">/result.jsp</result>
+			<result name="updatePassowrd_error">/user/userChangPass.jsp</result>
+		</action>
+		<action name="updateInfo" class="com.wgl.action.VUserAction" method="updateInfo">
+			<result name="updateInfo">/result.jsp</result>
+			<result name="updateInfo_error">/user/changeUserInfo.jsp</result>
+		</action>
+		
+   	 </package>
+    	
+    </struts>

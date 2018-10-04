@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+    
+    <struts>
+    	<include file="struts_config/struts_activityEnroll.xml"></include>
+    	<include file="struts_config/struts_user.xml"></include>
+    	
+    	<include file="struts_config/struts_news.xml"></include>
+    	
+    	<include file="struts_config/struts_announces.xml"></include>
+    	
+    	<include file="struts_config/struts_activitys.xml"></include>
+    	
+        <include file="struts_config/struts-album.xml"></include>
+        
+        	<include file="struts_config/struts-manage.xml"></include>
+        	<include file="struts_config/struts_doc.xml"></include>
+        	<include file="struts_config/struts_video.xml"></include>
+        	<include file="struts_config/struts_vuser.xml"></include>
+           <include file="struts_config/struts_admin.xml"></include>
+           <include file="struts_config/struts_shop.xml"></include>
+           <include file="struts_config/struts_banner.xml"></include>
+           <include file="struts_config/struts_index.xml"></include>
+   <include file="struts_config/struts_tree.xml"></include>
+    	<package name="actions" extends="struts-default">  
+    	
+		  	<action name="ckeditorUpload" class="com.wgl.CkeditorUpload.CkeditorUpload">  
+			</action>  
+			
+			<action name="createImageAction" class="com.wgl.action.CreateImageAction">
+				<result name="success" type="stream">
+					<param name="contentType">image/jpeg</param>
+					<param name="inputName">inputStream</param>
+				</result>
+			</action>
+		</package>
+    	   
+    </struts>

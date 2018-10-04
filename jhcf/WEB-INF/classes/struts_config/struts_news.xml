@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+    
+    <struts>
+    	<package name="news" extends="struts-default">
+    		<action name="newsAction" class="com.wgl.action.NewsAction">
+    			<result name="addNews" type="redirect">newsAction!getAllNews.go</result>
+    			<result name="addNews_error">/404.jsp</result>
+    			<result name="tiaozhuan_News">/WEB-INF/admin/addNews.jsp</result>
+    			<result name="getAllNews">/WEB-INF/admin/adminNews.jsp</result>
+    			<result name="getAllFrontNews">/WEB-INF/jhd/xwzx.jsp</result>
+    			<result name="getAllNews_error">/404.jsp</result>
+    			<result name="getNewsById">/WEB-INF/admin/updateNews.jsp</result>
+    			<result name="getNewsById_error"></result>
+    			<result name="upateNews" type="redirect">newsAction!getAllNews.go</result>
+    			<result name="deleteNews" type="redirectAction">
+    			   <param name="actionName">newsAction</param>
+                   <param name="method">getAllNews</param>
+    			</result>			
+    			
+    			
+    			<result name="tiao_index">/WEB-INF/jhd/index.jsp</result>
+    			
+    			<result name="getAllNews_query">/WEB-INF/admin/adminNews_query.jsp</result>
+    			<result name="getAllNews_error_query">/WEB-INF/admin/adminNews_query.jsp</result>
+    			<result name="getAllNewsByGroupname">/WEB-INF/jhd/frontNews.jsp</result>
+    			<result name="getAllNewsByGroupname_error">/WEB-INF/jhd/frontNews.jsp</result>
+    			<result name="grounamenews">/WEB-INF/admin/categoryNews.jsp</result>
+    			<result name="admin_groupnamenew">/WEB-INF/admin/adminGroupnameNews.jsp</result>
+    			<result name="admin_groupnamenew_error">/WEB-INF/admin/adminGroupnameNews.jsp</result>
+    			<result name="getAllGroupnameNews_query">/WEB-INF/admin/adminGroupnameNews.jsp</result>
+    			<result name="getAllGroupnameNews_error_query">/WEB-INF/admin/adminGroupnameNews.jsp</result>
+    			<result name="defaultNews">/WEB-INF/jhd/newsDefault.jsp</result>
+    		</action>
+    	</package> 
+    </struts>

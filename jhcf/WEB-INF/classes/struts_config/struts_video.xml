@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+    
+    <struts>
+    	 <package name="video"  extends="struts-default">
+    	  <action name="shipinAdd" class="shipinAction" method="shipinAdd">
+    	   <result name="success" type="chain">shipinMana</result>
+        </action>
+        <action name="toadd" class="shipinAction">
+    	   <result>/WEB-INF/admin/shipinAdd.jsp</result>
+    	   
+        </action>
+        <action name="shipinDel" class="shipinAction" method="shipinDel">
+        <result name="success" type="chain">shipinMana</result>
+        </action>
+        <action name="shipinMana" class="shipinAction" method="shipinMana">
+             <result>/WEB-INF/admin/shipinMana.jsp</result>
+        </action>
+        <action name="shipinAll" class="shipinAction" method="shipinAll">
+             <result>/WEB-INF/jhd/shipinAll.jsp</result>
+        </action>
+        <action name="shipinDetailQian" class="shipinAction" method="shipinDetailQian">
+             <result>/WEB-INF/jhd/shipinDetailQian.jsp</result>
+        </action>
+        
+         <action name="upload" class="com.util.upload" method="upload">
+             <result name="success">/upload/upload_re.jsp</result>
+        </action>
+        
+    	</package> 
+    </struts>
